@@ -1,0 +1,34 @@
+name: smartwork
+
+services:
+  web:
+    build:
+      context: .
+      secrets: [env]
+    image: smartwork
+    env_file: .env.local
+    ports:
+      - '3000:3000'
+    restart: unless-stopped
+
+  digest:
+    image: smartwork
+    pull_policy: never
+    init: true
+    command: node scripts/daily-digest.mjs
+    env_file: .env.local
+    environment:
+      TZ: Asia/Kolkata
+      DIGEST_STATE_FILE: /data/last-sent
+    volumes:
+      - digest-data:/data
+    depends_on:
+      - web
+    restart: unless-stopped
+
+secrets:
+  env:
+    file: .env.local
+
+volumes:
+  digest-data:
