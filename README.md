@@ -45,8 +45,10 @@ Here is the folder structure of this app.
 
 <!--- FOLDER_STRUCTURE_START --->
 ```bash
-jira-clone/
+smartwork/
   |- public/
+  |- scripts/
+    |-- daily-digest.mjs
   |- src/
     |-- app/
       |--- (auth)/
@@ -98,6 +100,7 @@ jira-clone/
       |--- oauth.ts
       |--- session-middleware.ts
       |--- utils.ts
+  |- .dockerignore
   |- .env.example
   |- .env/.env.local
   |- .eslintrc.json
@@ -105,6 +108,8 @@ jira-clone/
   |- .prettierrc.json
   |- .prettierrc.mjs
   |- components.json
+  |- docker-compose.yml
+  |- Dockerfile
   |- environment.d.ts
   |- next.config.mjs
   |- package.json
